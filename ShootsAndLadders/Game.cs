@@ -26,7 +26,10 @@ namespace ShootsAndLadders
             {
                 newposition = player.CurrentPostion;
             }
-            Console.WriteLine($"Player {player.GetNumber()} moved to square {newposition}.");
+            if (newposition != player.CurrentPostion)
+                Console.WriteLine($"Player {player.GetNumber()} moved to square {newposition}.");
+            else
+                Console.WriteLine($"Player {player.GetNumber()} continue to stay at {newposition}.");
             player.CurrentPostion = newposition;
 
             //Check whether need to take ladder or shoot
