@@ -1,0 +1,28 @@
+[Oo]bj/
+[Bb]in/
+*.suo
+*.user
+/TestResults
+*.vspscc
+*.vssscc
+_ReSharper*
+*.dbmdl
+Deployment/Packages/
+packages/*
+!/packages/repositories.config
+
+# NCrunch
+*.ncrunch*
+_NCrunch_*
+.*crunch*.local.xml
+
+.sass-cache
+
+# Ignore VS2015 config files
+.vs/
+
+# Ignore TabStudio config files
+*.tss
+
+# NPM
+**/node_modules
