@@ -7,7 +7,7 @@ namespace ShootsAndLadders
     public class Player
     {
         private int Number;
-        private Random Random;
+        //private Random Random;
 
         public int GetNumber()
         {
@@ -19,13 +19,13 @@ namespace ShootsAndLadders
             Number = value;
         }
 
-        public int Move()
+        public int Move(Random random)
         {
             // if (Random == null)
             // {
-            Random = new Random(Number);
+            //Random = new Random(Number);
             //}
-            var spaces = Random.Next(1, 7);
+            var spaces = random.Next(1, 7);
             Console.WriteLine($"Player {GetNumber()} spun a {spaces}.");
             return spaces;
         }

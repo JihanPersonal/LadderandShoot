@@ -8,9 +8,10 @@ namespace ShootsAndLadders
     {
         public List<Square> Squares { get; set; }
         public List<Player> Players { get; set; }
-
+        private Random random;
         public Board(int numberOfPlayers)
         {
+            random = new Random();
             Players = new List<Player>();
             Squares = new List<Square>();
             //FIXED: Start at 1, Starting at Player 0 was bad.

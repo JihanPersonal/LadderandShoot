@@ -1,16 +1,28 @@
 ﻿using System;
 using System.Linq;
-
+using System.Collections.Generic;
 namespace ShootsAndLadders
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Random random = new Random();
             while (true)
             {
                 Console.WriteLine("Welcome to shoots and ladders! How many players?");
                 string numberOfPlayers = Console.ReadLine();
+
+                // int num = int.Parse(numberOfPlayers);
+                // List<int> res = new List<int>();
+                // while (num > 0)
+                // {
+                //     num--;
+                //     res.Add(random.Next(1, 7));
+                // }
+                // Console.WriteLine("Folowwing is the result: *********************");
+                // res.ForEach(i => Console.WriteLine(i));
+
                 var board = new Board(int.Parse(numberOfPlayers));
                 while (!board.Squares.Last().Players.Any())
                 {
@@ -18,7 +30,7 @@ namespace ShootsAndLadders
                     {
                         var currentSquare = board.Squares.Single(x => x.Players.Any(y => y.GetNumber() == player.GetNumber()));
                         var currentSquareIndex = board.Squares.IndexOf(currentSquare);
-                        var move = player.Move();
+                        var move = player.Move(random);
                         var newSquare = currentSquareIndex + move;
                         if (newSquare >= board.Squares.Count())
                         {
@@ -39,7 +51,7 @@ namespace ShootsAndLadders
                         board.Squares[newSquare].Players.Add(player);
                     }
                 }
-                var winner = board.Squares.Last().Players.First().GetNumber();                
+                var winner = board.Squares.Last().Players.First().GetNumber();
                 Console.WriteLine($"Play {winner} wins the game!");
                 Console.WriteLine("Would you like to play again? Y/n");
                 var playAgain = Console.ReadLine();
