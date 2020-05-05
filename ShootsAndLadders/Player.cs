@@ -34,11 +34,10 @@ namespace ShootsAndLadders
             Number = value;
         }
 
-        public int Move(Random random)
+        //Player call the core logic of game to update its position
+        public void Play(Game game)
         {
-            var spaces = random.Next(1, 7);
-            Console.WriteLine($"Player {GetNumber()} spun a {spaces}.");
-            return spaces;
+            game.MovePlayer(this);
         }
     }
 }

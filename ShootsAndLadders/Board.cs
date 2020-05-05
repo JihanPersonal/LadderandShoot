@@ -3,32 +3,29 @@ using System.Collections.Generic;
 using System.Text;
 namespace ShootsAndLadders
 {
-    public enum Status
-    {
-        Win,
-        Undergoing
-    }
-    public class Board
+    public sealed class Board
     {
         public List<Square> Squares { get; set; }
-        public List<Player> Players { get; set; }
         public Random Dice { get; }
-        public Status GameStatus;
-        public Board(int numberOfPlayers, Random dice)
-        {
-            Dice = dice;
-            GameStatus = Status.Undergoing;
-            Players = new List<Player>();
-            Squares = new List<Square>();
-            //FIXED: Start at 1, Starting at Player 0 was bad.
-            for (int i = 1; i <= numberOfPlayers; i++)
-            {
-                var nextPlayer = new Player();
-                nextPlayer.SetNumber(i);
-                Players.Add(nextPlayer);
-            }
+        private static Board board;
 
-            for (var j = 0; j <= 100; j++)
+        public int MaxSize;
+        public static Board GetBoard()
+        {
+            if (board == null)
+                board = new Board();
+            return board;
+        }
+        public int RollDice()
+        {
+            return Dice.Next(1, 7);
+        }
+        private Board(int size = 100)
+        {
+            Dice = new Random();
+            Squares = new List<Square>();
+            MaxSize = size;
+            for (var j = 0; j <= MaxSize; j++)
             {
                 var newSquare = new Square();
                 Squares.Add(newSquare);
@@ -92,7 +89,6 @@ namespace ShootsAndLadders
                 {
                     newSquare.LadderTo = 53;
                 }
-
             }
         }
     }
