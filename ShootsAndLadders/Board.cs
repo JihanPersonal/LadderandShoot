@@ -9,11 +9,12 @@ namespace ShootsAndLadders
         public List<Square> Squares { get; set; }
         public List<Player> Players { get; set; }
 
-        public Board(int numberOfPlayers) {
+        public Board(int numberOfPlayers)
+        {
             Players = new List<Player>();
             Squares = new List<Square>();
             //FIXED: Start at 1, Starting at Player 0 was bad.
-            for (int i = 1; i < 3; i++)
+            for (int i = 1; i <= numberOfPlayers; i++)
             {
                 var nextPlayer = new Player();
                 nextPlayer.SetNumber(i);
