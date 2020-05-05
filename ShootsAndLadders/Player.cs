@@ -21,10 +21,11 @@ namespace ShootsAndLadders
 
         public int Move()
         {
-            if (Random == null) {
-                Random = new Random(Number);
-            }
-            var spaces = Random.Next(0, 6);
+            // if (Random == null)
+            // {
+            Random = new Random(Number);
+            //}
+            var spaces = Random.Next(1, 7);
             Console.WriteLine($"Player {GetNumber()} spun a {spaces}.");
             return spaces;
         }
