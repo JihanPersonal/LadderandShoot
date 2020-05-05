@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Security.Cryptography.RNGCryptoServiceProvider;
 namespace ShootsAndLadders
 {
     public class Board
     {
         public List<Square> Squares { get; set; }
         public List<Player> Players { get; set; }
-        private Random random;
-        public Board(int numberOfPlayers)
+        public Random Dice { get; }
+        public Board(int numberOfPlayers, Random dice)
         {
-            random = new Random();
+            Dice = dice;
             Players = new List<Player>();
             Squares = new List<Square>();
             //FIXED: Start at 1, Starting at Player 0 was bad.

@@ -7,30 +7,20 @@ namespace ShootsAndLadders
     {
         static void Main(string[] args)
         {
-            Random random = new Random();
+            var dice = new Random();
             while (true)
             {
                 Console.WriteLine("Welcome to shoots and ladders! How many players?");
                 string numberOfPlayers = Console.ReadLine();
 
-                // int num = int.Parse(numberOfPlayers);
-                // List<int> res = new List<int>();
-                // while (num > 0)
-                // {
-                //     num--;
-                //     res.Add(random.Next(1, 7));
-                // }
-                // Console.WriteLine("Folowwing is the result: *********************");
-                // res.ForEach(i => Console.WriteLine(i));
-
-                var board = new Board(int.Parse(numberOfPlayers));
+                var board = new Board(int.Parse(numberOfPlayers), dice);
                 while (!board.Squares.Last().Players.Any())
                 {
                     foreach (var player in board.Players)
                     {
                         var currentSquare = board.Squares.Single(x => x.Players.Any(y => y.GetNumber() == player.GetNumber()));
                         var currentSquareIndex = board.Squares.IndexOf(currentSquare);
-                        var move = player.Move(random);
+                        var move = player.Move(board.Dice);
                         var newSquare = currentSquareIndex + move;
                         if (newSquare >= board.Squares.Count())
                         {
