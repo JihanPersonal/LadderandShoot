@@ -20,16 +20,16 @@ namespace ShootsAndLadders
         public void MovePlayer(Player player)
         {
             var spaces = board.RollDice();
-            Console.WriteLine($"Player {player.GetNumber()} spun a {spaces}.");
+            Console.WriteLine($"Player {player.GetID()} spun a {spaces}.");
             var newposition = player.CurrentPostion + spaces;
             if (newposition > board.MaxSize)
             {
                 newposition = player.CurrentPostion;
             }
             if (newposition != player.CurrentPostion)
-                Console.WriteLine($"Player {player.GetNumber()} moved to square {newposition}.");
+                Console.WriteLine($"Player {player.GetID()} moved to square {newposition}.");
             else
-                Console.WriteLine($"Player {player.GetNumber()} continue to stay at {newposition}.");
+                Console.WriteLine($"Player {player.GetID()} continue to stay at {newposition}.");
             player.CurrentPostion = newposition;
 
             //Check whether need to take ladder or shoot
@@ -72,7 +72,7 @@ namespace ShootsAndLadders
             for (int i = 1; i <= numberOfPlayers; i++)
             {
                 var nextPlayer = new Player();
-                nextPlayer.SetNumber(i);
+                nextPlayer.SetID(i);
                 Players.Add(nextPlayer);
             }
         }

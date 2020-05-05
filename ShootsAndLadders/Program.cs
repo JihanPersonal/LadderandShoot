@@ -9,9 +9,10 @@ namespace ShootsAndLadders
         {
             while (true)
             {
+                int numberOfPlayers = -1;
+
                 Console.WriteLine("Welcome to shoots and ladders! How many players?");
                 string input = Console.ReadLine();
-                int numberOfPlayers = -1;
                 bool valid = int.TryParse(input, out numberOfPlayers);
                 if (!valid || numberOfPlayers < 1)
                 {
